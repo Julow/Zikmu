@@ -45,9 +45,9 @@ class Zikmu():
 
 	def set_meta(self):
 		split = self.name.split(" - ", 2);
-		if len(split) == 2:
+		if len(split) >= 2:
 			self.meta["Artist"] = split[0]
-			self.meta["Title"] = os.path.splitext(split[1])[0]
+			self.meta["Title"] = os.path.splitext(" - ".join(split[1:]))[0]
 		else:
 			self.meta["Title"] = os.path.splitext(self.name)[0]
 		sys.stdout.write("\033[90m%-64s\033[39m " % self.name)
