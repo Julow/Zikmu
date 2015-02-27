@@ -51,6 +51,8 @@ class Zikmu():
 		else:
 			self.meta["Title"] = os.path.splitext(self.name)[0]
 		sys.stdout.write("\033[90m%-64s\033[39m " % self.name)
+		if self.mfile.tags == None:
+			self.mfile.add_tags()
 		s = ""
 		for m in self.meta:
 			s += m + ": \033[92m%-16s\033[39m " % self.meta[m]
@@ -76,9 +78,11 @@ def main():
 		else:
 			try:
 				z = Zikmu(sys.argv[i], meta)
-				z.set_meta()
 			except:
+				z = None
 				pass
+			if not z == None:
+				z.set_meta()
 		i += 1
 	if i <= 1:
 		print("zikmu: Usage: %s [-g genre] [-d date] [-a album] [file1 ...]" % sys.argv[0])
