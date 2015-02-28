@@ -41,15 +41,18 @@ class Zikmu():
 		except:
 			print("zikmu: \033[91m%s\033[39m: File not found or not audio" % self.name)
 			raise
+		if self.mfile == None:
+			print("zikmu: \033[91m%s\033[39m: File not compatible" % self.name)
+			raise
 		self.meta = meta
 
 	def set_meta(self):
-		split = self.name.split(" - ", 2);
+		split = os.path.splitext(self.name)[0].split(" - ", 2);
 		if len(split) >= 2:
-			self.meta["Artist"] = split[0]
-			self.meta["Title"] = os.path.splitext(" - ".join(split[1:]))[0]
+			self.meta["Artist"] = split[0].strip()
+			self.meta["Title"] = os.path.splitext(" - ".join(split[1:]))[0].strip()
 		else:
-			self.meta["Title"] = os.path.splitext(self.name)[0]
+			self.meta["Title"] = split[0].strip()
 		sys.stdout.write("\033[90m%-64s\033[39m " % self.name)
 		if self.mfile.tags == None:
 			self.mfile.add_tags()
