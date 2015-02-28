@@ -11,6 +11,7 @@
 #
 # Options:
 #  -a album		Set album name for all songs
+#  -A artist	Set artist name for all songs
 #  -d date		Set date for all songs
 #  -g genre		Set genre for all songs
 # Options can be placed after arguments, it take effect for following song only:

@@ -15,6 +15,9 @@ Need `Mutagen` lib to be installed
 - `-a album`
 	Set album name for all following files
 
+- `-A artist`
+	Set artist name for all following files
+
 - `-d date`
 	Set date for all following files
 
