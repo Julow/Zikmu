@@ -75,6 +75,9 @@ def main():
 		elif sys.argv[i] == "-d":
 			i += 1
 			meta["Date"] = not_ascii(sys.argv[i])
+		elif sys.argv[i] == "-A":
+			i += 1
+			meta["Artist"] = not_ascii(sys.argv[i])
 		elif sys.argv[i] == "-a":
 			i += 1
 			meta["Album"] = not_ascii(sys.argv[i])
@@ -88,7 +91,7 @@ def main():
 				z.set_meta()
 		i += 1
 	if i <= 1:
-		print("zikmu: Usage: %s [-g genre] [-d date] [-a album] [file1 ...]" % sys.argv[0])
+		print("zikmu: Usage: %s [-g genre] [-d date] [-a album] [-A artist] [file1 ...]" % sys.argv[0])
 	return 0
 
 sys.exit(main())
